@@ -4,7 +4,7 @@ use std::collections::HashMap;
 use std::sync::Arc;
 use crate::Orientation;
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct PdfDocument {
     pub name: String,
     pub size: u64,
@@ -12,7 +12,7 @@ pub struct PdfDocument {
     pub path: Option<std::path::PathBuf>,
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct PdfPage {
     pub id: String,
     pub page_number: u32,

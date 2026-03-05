@@ -1,0 +1,190 @@
+========================================
+  NoteCypher Desktop App - Build Script
+========================================
+
+Checking Rust installation...
+rustc 1.93.1 (01f6ddf75 2026-02-11)
+
+Rust is installed!
+
+Building NoteCypher in Release mode...
+This may take a while on first build...
+
+    Blocking waiting for file lock on artifact directory
+   Compiling notecypher v1.0.0 (G:\env\NoteCypher-Desktop)
+warning: variants `FilesSelected` and `SetMargin` are never constructed
+  --> src\main.rs:34:5
+   |
+33 | enum Message {
+   |      ------- variants in this enum
+34 |     FilesSelected(Vec<PathBuf>),
+   |     ^^^^^^^^^^^^^
+...
+46 |     SetMargin(f32),
+   |     ^^^^^^^^^
+   |
+   = note: `Message` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: associated items `new`, `load_theme`, and `title` are never used
+  --> src\main.rs:61:8
+   |
+60 | impl NoteCypher {
+   | --------------- associated items in this implementation
+61 |     fn new() -> (Self, Task<Message>) {
+   |        ^^^
+...
+71 |     fn load_theme(&mut self) {
+   |        ^^^^^^^^^^
+...
+98 |     fn title(&self) -> String {
+   |        ^^^^^
+
+warning: field `path` is never read
+  --> src\pdf_processor.rs:11:9
+   |
+ 8 | pub struct PdfDocument {
+   |            ----------- field in this struct
+...
+11 |     pub path: Option<std::path::PathBuf>,
+   |         ^^^^
+   |
+   = note: `PdfDocument` has a derived impl for the trait `Clone`, but this is intentionally ignored during dead code analysis
+
+warning: multiple fields are never read
+  --> src\pdf_processor.rs:19:9
+   |
+15 | pub struct PdfPage {
+   |            ------- fields in this struct
+...
+19 |     pub file_name: String,
+   |         ^^^^^^^^^
+20 |     pub page_number_in_pdf: u32,
+   |         ^^^^^^^^^^^^^^^^^^
+21 |     pub page_index: usize,
+   |         ^^^^^^^^^^
+22 |     pub thumbnail_data: Arc<Vec<u8>>,
+   |         ^^^^^^^^^^^^^^
+23 |     pub image_data: Arc<Vec<u8>>,
+   |         ^^^^^^^^^^
+24 |     pub width: u32,
+   |         ^^^^^
+25 |     pub height: u32,
+   |         ^^^^^^
+   |
+   = note: `PdfPage` has a derived impl for the trait `Clone`, but this is intentionally ignored during dead code analysis
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> src\main.rs:225:13
+    |
+225 |     fn view(&self) -> Element<Message> {
+    |             ^^^^^     ^^^^^^^^^^^^^^^^ the same lifetime is hidden here
+    |             |
+    |             the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+    = note: `#[warn(mismatched_lifetime_syntaxes)]` on by default
+help: use `'_` for type paths
+    |
+225 |     fn view(&self) -> Element<'_, Message> {
+    |                               +++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> src\main.rs:248:20
+    |
+248 |     fn header_view(&self) -> Element<Message> {
+    |                    ^^^^^     ^^^^^^^^^^^^^^^^ the same lifetime is hidden here
+    |                    |
+    |                    the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+248 |     fn header_view(&self) -> Element<'_, Message> {
+    |                                      +++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> src\main.rs:271:26
+    |
+271 |     fn how_it_works_view(&self) -> Element<Message> {
+    |                          ^^^^^     ^^^^^^^^^^^^^^^^ the same lifetime is hidden here
+    |                          |
+    |                          the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+271 |     fn how_it_works_view(&self) -> Element<'_, Message> {
+    |                                            +++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> src\main.rs:287:28
+    |
+287 |     fn upload_section_view(&self) -> Element<Message> {
+    |                            ^^^^^     ^^^^^^^^^^^^^^^^ the same lifetime is hidden here
+    |                            |
+    |                            the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+287 |     fn upload_section_view(&self) -> Element<'_, Message> {
+    |                                              +++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> src\main.rs:308:29
+    |
+308 |     fn options_section_view(&self) -> Element<Message> {
+    |                             ^^^^^     ^^^^^^^^^^^^^^^^ the same lifetime is hidden here
+    |                             |
+    |                             the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+308 |     fn options_section_view(&self) -> Element<'_, Message> {
+    |                                               +++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> src\main.rs:331:32
+    |
+331 |     fn thumbnails_section_view(&self) -> Element<Message> {
+    |                                ^^^^^     ^^^^^^^^^^^^^^^^ the same lifetime is hidden here
+    |                                |
+    |                                the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+331 |     fn thumbnails_section_view(&self) -> Element<'_, Message> {
+    |                                                  +++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> src\main.rs:371:28
+    |
+371 |     fn export_section_view(&self) -> Element<Message> {
+    |                            ^^^^^     ^^^^^^^^^^^^^^^^ the same lifetime is hidden here
+    |                            |
+    |                            the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+371 |     fn export_section_view(&self) -> Element<'_, Message> {
+    |                                              +++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> src\main.rs:409:16
+    |
+409 | fn view(state: &NoteCypher) -> Element<Message> {
+    |                ^^^^^^^^^^^     ^^^^^^^^^^^^^^^^ the same lifetime is hidden here
+    |                |
+    |                the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+409 | fn view(state: &NoteCypher) -> Element<'_, Message> {
+    |                                        +++
+
+    Building [=======================> ] 410/411: notecypher(bin)

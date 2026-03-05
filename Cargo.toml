@@ -1,0 +1,41 @@
+[package]
+name = "notecypher"
+version = "1.0.0"
+edition = "2021"
+authors = ["NoteCypher Team"]
+description = "A native desktop PDF note optimizer for students"
+license = "MIT"
+
+[dependencies]
+# GUI Framework
+iced = { version = "0.13", features = ["image", "canvas", "tokio"] }
+iced_aw = "0.11"
+
+# File Dialogs
+rfd = "0.15"
+
+# PDF Processing
+pdf = "0.10"
+lopdf = "0.32"
+image = "0.25"
+
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+
+# Image encoding
+png = "0.17"
+jpeg-decoder = "0.3"
+miniz_oxide = "0.8"
+
+# Utilities
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+dirs = "5.0"
+chrono = "0.4"
+
+# Color manipulation
+palette = "0.7"
+
+[profile.release]
+opt-level = 3
+lto = true
